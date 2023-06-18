@@ -9,6 +9,7 @@ import { AppService } from './services/app.service';
 })
 export class AppComponent implements OnInit {
   listNumbers$?: Observable<number[]>;
+  title = "pipe_async";
 
 constructor(private appService: AppService){}
 
