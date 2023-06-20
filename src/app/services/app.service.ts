@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Subject, timer } from 'rxjs';
+import { Observable, Subject, map, of, timer } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppService {
   listNumbers$ = new Subject<number[]>();
 
-  constructor() { }
+  constructor() {
+    // this.listNumbers2$.next(this.generateArray(4));
+  }
 
   refreshListNumbers() {
-    timer(1000).subscribe(x => {
-      const tmp = [];
-      for (let i = 0; i < 4; i++) {
-        tmp.push(Math.floor(Math.random() * 10));
-      }
-      this.listNumbers$.next(tmp);
+    timer(1000).subscribe(() => {
+      this.listNumbers$.next(this.generateArray(4));
     });
   }
 
+  generateArray(size: number): number[] {
+    return Array.from({ length: size }, () => Math.floor(Math.random() * 10));
+  }
 }
