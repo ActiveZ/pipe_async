@@ -6,9 +6,21 @@
     <thead>
       <th>Value version 1</th>
     </thead>
-
     <tbody>
       <tr *ngFor="let val of listNumber">
+        <td>{{val}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-container *ngIf="data; else loadingList">
+  <table>
+    <thead>
+      <th>Value version 2</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let val of data">
         <td>{{val}}</td>
       </tr>
     </tbody>
